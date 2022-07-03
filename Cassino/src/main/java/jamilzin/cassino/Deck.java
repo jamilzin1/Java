@@ -11,8 +11,6 @@ import java.util.Random;
     public  ArrayList<Card> playerA = new ArrayList<>();
     public  ArrayList<Card> playerB = new ArrayList<>();
     public  ArrayList<Card> dealerCards = new ArrayList<>();
-
-
     private ArrayList<String> suits = new ArrayList(Arrays.asList(" Diamonds", " Clubs", " Spades", " Hearts"));
     Random gerador = new Random();
     

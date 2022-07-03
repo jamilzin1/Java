@@ -21,7 +21,8 @@ this.hands = new ArrayList<>();
     return hands;
     }
     
-    public int getTestando(){
+    public int getSumPlayer(){
+  //System.out.println("Player "+getName()+ " Hands: ");
    return  hands.stream().mapToInt(Card::getValue).sum();
     }
 
