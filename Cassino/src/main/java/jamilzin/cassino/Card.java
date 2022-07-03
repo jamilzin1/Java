@@ -23,4 +23,5 @@ public class Card {
      return getValue() + getSuit();
     //return Integer.toString(getValue());
 }
+
 }

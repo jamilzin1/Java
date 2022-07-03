@@ -10,6 +10,8 @@ import java.util.Random;
     private ArrayList<Card> deck = new ArrayList<>();
     public  ArrayList<Card> playerA = new ArrayList<>();
     public  ArrayList<Card> playerB = new ArrayList<>();
+    public  ArrayList<Card> dealerCards = new ArrayList<>();
+
 
     private ArrayList<String> suits = new ArrayList(Arrays.asList(" Diamonds", " Clubs", " Spades", " Hearts"));
     Random gerador = new Random();
@@ -40,6 +42,15 @@ public ArrayList<Card> provideNewCards(){
   playerB.add(card);
    deck.set(number, null);
         return  playerB ;} 
+
+public ArrayList<Card> provideDealerCards(){
+   int  number = gerador.nextInt(52);
+   while(deck.get(number)==null){ 
+        number = gerador.nextInt(52);}
+   Card card = (deck.get(number));
+  dealerCards.add(card);
+   deck.set(number, null);
+        return  dealerCards ;} 
 
 
 @Override
