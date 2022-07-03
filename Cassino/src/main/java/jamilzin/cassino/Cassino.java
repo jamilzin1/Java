@@ -16,10 +16,14 @@ public class Cassino {
     System.out.println("Sejam bem-vindos ao Cassino de jamilzin! ");
     
    //     System.out.println("quantas cartas deseja?");
-    //int user = scanner.nextInt();
+    // int user = scanner.nextInt();
  Deck deckMaster = new Deck();
+ Dealer dealerHouse = new Dealer();
 Player PlayerA = new Player();
 Player PlayerB = new Player();
+//System.out.println("Jogador 1 digite seu nome: ");
+//String nameA = scanner.next();
+//PlayerA.setName(nameA);
 for(int i=1;i<=5;i++){
  PlayerA.setHands(deckMaster.provideCards());}
 for(int i=1;i<=5;i++){

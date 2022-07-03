@@ -9,5 +9,12 @@ public class Dealer {
 
     Dealer(){
     }
-    
+
+    public ArrayList<Card> getDealerHands() {
+        return dealerHands;
+    }
+
+    public void setDealerHands(ArrayList<Card> dealerHands) {
+        this.dealerHands = dealerHands;
+    } 
 }
