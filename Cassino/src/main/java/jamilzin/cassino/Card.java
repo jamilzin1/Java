@@ -8,21 +8,20 @@ public class Card {
     Card(int value, String suit){
     this.value = value;
     this.suit = suit;
-    
     }
 
     public String getSuit() {
         return suit;
     }
 
-
     public int getValue() {
         return value;
     }
-    
+
     @Override
-public String toString() {
-    return getValue() + getSuit();
+    public String toString() {
+     return getValue() + getSuit();
+    //return Integer.toString(getValue());
 }
     
     
