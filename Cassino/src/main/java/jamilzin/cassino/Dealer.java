@@ -11,7 +11,8 @@ public class Dealer {
     }
 
     public ArrayList<Card> getDealerHands() {
-        return dealerHands;
+        System.out.println("Dealer Hands: ");
+       return dealerHands;
     }
 
     public void setDealerHands(ArrayList<Card> dealerHands) {

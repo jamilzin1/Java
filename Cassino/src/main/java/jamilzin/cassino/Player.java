@@ -17,7 +17,7 @@ this.hands = new ArrayList<>();
     }
    
     public ArrayList<Card> getHands() {
-        System.out.println("As cartas do "+name+ " sao: ");
+        System.out.println("As cartas de "+name+ " sao: ");
     return hands;
     }
     
