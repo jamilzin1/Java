@@ -15,12 +15,10 @@ public class Game {
  Player PlayerA = new Player();
  Player PlayerB = new Player();
 
- public void compare(){
- }
      public void startGame(){ 
-     System.out.println("----------------------------------------------------------------------------------");
-    System.out.println("                      Sejam bem-vindos ao Cassino de jamilzin! ");
-    System.out.println("----------------------------------------------------------------------------------");
+     linha();
+    System.out.println("                      Welcome to Cassino of jamilzin! ");
+     linha();
      dealerHouse.setDealerHands(deckMaster.provideDealerCards());
      PlayerA.setHands(deckMaster.provideCards());
      PlayerB.setHands(deckMaster.provideNewCards());
@@ -28,11 +26,51 @@ public class Game {
      PlayerA.setHands(deckMaster.provideCards());
      PlayerB.setHands(deckMaster.provideNewCards());
      PlayerName();
+    System.out.print("\n \n \n \n");  
+ System.out.println("Welcome "+PlayerA.getName()+"!");
+     System.out.println("Welcome "+PlayerB.getName()+"!");
+
+     linha();
+     System.out.println("Blackjack will begin! GETS READY! \n");
+     System.out.println("The dealer's first card is:\n" +dealerHouse.dealerHands.get(1));
+     linha();
+     gameplay();
 
     }
+     public void gameplay(){
+        buyHouse(PlayerA);
+        buyHouse(PlayerB);
+     }
      
+     public void buyHouse(Player player){
+      System.out.println("HELLO "+player.getName()+" DO YOU WANT BUY MORE?");
+      cards(player);
+       System.out.println("press 1 to buy or type anything if you're ok");
+       linha();
+       String shop = scanner.next();
+         
+         if("1".equals(shop)){
+         playerCard(player);
+         linha();
+         buyHouse(player);}
+         else 
+         System.out.print("\n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n");  
+         System.out.println(" Ok "+player.getName()+ " thank you! Good luck! \n");
+        cards(player);
+           System.out.print("\n");  
+            linha();
+           System.out.print("\n");  
+
+     }
+     public  void cards(Player player){
+     System.out.println("Your cards are: "+player.hands);}
+
+     public void linha(){
+     System.out.println("----------------------------------------------------------------------------------");
+}
      public void dealerCard(){
  dealerHouse.setDealerHands(deckMaster.provideDealerCards());
+ 
          System.out.println(dealerHouse.getDealerHands());
  }
      
@@ -40,14 +78,12 @@ public class Game {
    return dealerHouse.getSumDealer();}
      
      public void PlayerName(){
-     System.out.println("Ola jogador 1, diga seu nome: ");
+     System.out.println("Hello Player 1, type your name: ");
      String name = scanner.next();
      PlayerA.setName(name);
-     System.out.println("Seja bem-vindo "+PlayerA.getName());
-     System.out.println("Ola jogador 2, diga seu nome: ");
+     System.out.println("Hello Player 2, type your name: ");
      name = scanner.next();
      PlayerB.setName(name);
-     System.out.println("Seja bem-vindo "+PlayerB.getName());
 
      }
      
