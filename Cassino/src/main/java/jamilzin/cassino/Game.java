@@ -15,6 +15,8 @@ public class Game {
  Player PlayerA = new Player();
  Player PlayerB = new Player();
 
+ public void compare(){
+ }
      public void startGame(){ 
      System.out.println("----------------------------------------------------------------------------------");
     System.out.println("                      Sejam bem-vindos ao Cassino de jamilzin! ");
