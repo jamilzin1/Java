@@ -35,15 +35,55 @@ public class Game {
      System.out.println("The dealer's first card is:\n" +dealerHouse.dealerHands.get(1));
      linha();
      gameplay();
-
+    
+  
     }
+     
+     public void status(){
+      cards(PlayerA);
+      cards(PlayerB);
+       System.out.println("Dealer hands is: "+dealerHouse.getDealerHands());
+     }
+     
+     public void winner(Player player){
+         if(player.getSumPlayer()==21){
+             System.out.println("Congrats "+player.getName()+" ! You hitted 21 points and win!");
+         }
+
+     if(dealerHouse.getSumDealer()<player.getSumPlayer() && player.getSumPlayer()<21){
+         System.out.println(player.getName()+" wins against Dealer! ");
+              System.out.println("Thank you for play!");
+}
+     
+         else if(dealerHouse.getSumDealer()>player.getSumPlayer()){
+         System.out.println("Dealer house wins against "+player.getName()+"!");
+         System.out.println("Thank you for play!");}
+         
+         else if (dealerHouse.getSumDealer()==player.getSumPlayer()){
+             System.out.println(player.getName()+"Draw with the Dealer!");
+              System.out.println("Thank you for play!");}
+         else{
+         System.out.println(player.getName()+" you lost :( can try again.");
+       System.out.println("Thank you for play!");}
+
+         }
+
      public void gameplay(){
         buyHouse(PlayerA);
         buyHouse(PlayerB);
+      if(dealerHouse.getSumDealer()<17){
+       dealerCard();
+         }
+        status();
+        linha();
+        winner(PlayerA);
+        winner(PlayerB);
+
      }
      
      public void buyHouse(Player player){
       System.out.println("HELLO "+player.getName()+" DO YOU WANT BUY MORE?");
+      linha();
       cards(player);
        System.out.println("press 1 to buy or type anything if you're ok");
        linha();
@@ -51,31 +91,38 @@ public class Game {
          
          if("1".equals(shop)){
          playerCard(player);
+                  
+         if(player.getSumPlayer()>21){
+             System.out.print("\n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n");
+             System.out.println("BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMMMMMMMMMM!!!");
+             System.out.println(player.getName()+" YOU LOST! Hitted more than 21!\n");
+             linha();
+        }
+         else{
          linha();
          buyHouse(player);}
-         else 
+         }
+         else {
          System.out.print("\n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n");  
          System.out.println(" Ok "+player.getName()+ " thank you! Good luck! \n");
         cards(player);
            System.out.print("\n");  
             linha();
-           System.out.print("\n");  
-
+           System.out.print("\n");  }
      }
      public  void cards(Player player){
-     System.out.println("Your cards are: "+player.hands);}
+     System.out.println(player.getName()+" cards is: "+player.hands);}
 
      public void linha(){
      System.out.println("----------------------------------------------------------------------------------");
 }
      public void dealerCard(){
  dealerHouse.setDealerHands(deckMaster.provideDealerCards());
- 
-         System.out.println(dealerHouse.getDealerHands());
  }
      
      public int getSumDealer(){
-   return dealerHouse.getSumDealer();}
+         return dealerHouse.getSumDealer();
+   }
      
      public void PlayerName(){
      System.out.println("Hello Player 1, type your name: ");
