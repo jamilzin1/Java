@@ -1,15 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+ 
+
 package jamilzin.magicsquare;
 
-public class main {
-    
-   /* 
-    public static void main(String[] args) {
-        MagicSquare quadrado = new MagicSquare();
-        quadrado.magicSquare();
     
     import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
@@ -25,9 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Main {
-    public static void main(String[] args) {
-        new Main();
-    }
+  
 
     public Main() {
         EventQueue.invokeLater(new Runnable() {
@@ -90,5 +83,4 @@ public class Main {
     }
 }
     
-    } */
-}
+

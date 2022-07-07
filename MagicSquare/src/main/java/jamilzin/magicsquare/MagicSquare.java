@@ -2,8 +2,10 @@ package jamilzin.magicsquare;
 import javax.swing.*;
  import java.awt.*;
  import java.awt.event.*;
-
-
+//import java.awt.event.FocusAdapter;
+//import java.awt.event.FocusEvent;
+//import javax.swing.JButton;
+//import javax.swing.JTextField;
 
 public class MagicSquare implements ActionListener {
 
@@ -13,7 +15,7 @@ public class MagicSquare implements ActionListener {
     JButton[] numbers = new JButton[10];
     JTextField[] positions = new JTextField[9];
     JButton[] functions = new JButton[2];
-    
+    private JTextField focusField;
     
     void magicSquare(){
     
@@ -45,7 +47,15 @@ public class MagicSquare implements ActionListener {
     
     for(int i=0; i<9;i++){
     positions[i] = new JTextField();
-    positions[i].addActionListener(this);
+    positions[i].addFocusListener(new FocusAdapter() {
+    
+    @Override
+    
+    public void focusGained(FocusEvent click){
+    focusField = (JTextField)click.getSource();
+    }
+            
+    } );
 }
  
     panel.setBounds(0, 0, 500, 400);
@@ -87,6 +97,22 @@ public class MagicSquare implements ActionListener {
 
   @Override
     public void actionPerformed(ActionEvent e) {
+/*
+        if(focusField!=null){
+                focusField.setText(e.getActionCommand());
+                
+        } */
+        JButton botaoClick = (JButton)e.getSource();
+            
+
+                 focusField.setText(botaoClick.getText());
+
+            
+    }
+ /*
+            
+                @Override
+    public void actionPerformed(ActionEvent e) {
       JButton btnPressed = (JButton)e.getSource();
       for(int i=0; i<numbers.length;i++){
         if(numbers[i] == btnPressed){
@@ -95,7 +121,7 @@ public class MagicSquare implements ActionListener {
      }
 
     }
- 
+            */
     
     
        public static void main(String[] args) {
