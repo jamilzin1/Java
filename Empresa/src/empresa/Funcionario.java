@@ -1,11 +1,12 @@
 package empresa;
 
 
-public class Funcionario {
+public class Funcionario   {
    public String nome, email, cargo,sexo, CPF, telefone,usuario,senha;
 
     Funcionario(String nome, String CPF, String email, String telefone,
             String cargo, String sexo, String usuario, String senha){
+        
         this.nome=nome;
         this.CPF=CPF;
         this.email=email;
@@ -15,6 +16,7 @@ public class Funcionario {
         this.usuario=usuario;
         this.senha=senha;
     }
+
 
     public String getNome() {
         return nome;

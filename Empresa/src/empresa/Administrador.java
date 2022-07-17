@@ -15,7 +15,16 @@ Cadastro cadastro = new Cadastro();
         initComponents();
     }
 
+boolean verify(String usuario, String senha){
+    if(cadastro.loginVerify(usuario, senha)==1){
+    return true;}
 
+    else
+        return false;
+}
+void imprime(){
+                cadastro.imprime();
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,6 +34,9 @@ Cadastro cadastro = new Cadastro();
         PAGAR = new javax.swing.JButton();
         LISTA = new javax.swing.JButton();
         VOLTAR = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,45 +70,71 @@ Cadastro cadastro = new Cadastro();
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
+        jLabel1.setText("GERENCIAMENTO");
+
+        jLabel2.setText("Você está logado como administrador");
+
+        jButton1.setText("GERIR FUNCIONARIOS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CADASTRAR)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PAGAR)
-                            .addComponent(DEMITIR))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(126, 126, 126)
+                                .addComponent(CADASTRAR)
+                                .addGap(52, 52, 52)
+                                .addComponent(VOLTAR))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(218, 218, 218)
+                                .addComponent(PAGAR))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(98, 98, 98)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addComponent(LISTA))))
+                        .addGap(0, 17, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(LISTA)
-                .addGap(0, 120, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(VOLTAR)
-                .addGap(137, 137, 137))
+                .addGap(134, 134, 134)
+                .addComponent(DEMITIR)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(CADASTRAR)
                 .addGap(18, 18, 18)
-                .addComponent(DEMITIR)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
+                .addComponent(jButton1)
+                .addGap(33, 33, 33)
                 .addComponent(PAGAR)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LISTA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(VOLTAR)
-                .addGap(19, 19, 19))
+                .addGap(5, 5, 5)
+                .addComponent(DEMITIR)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VOLTAR)
+                    .addComponent(CADASTRAR))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
 
         pack();
@@ -104,7 +142,7 @@ Cadastro cadastro = new Cadastro();
 
     private void CADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CADASTRARActionPerformed
         // TODO add your handling code here:
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                  cadastro.setVisible(true);
@@ -123,17 +161,23 @@ Cadastro cadastro = new Cadastro();
 
     private void DEMITIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEMITIRActionPerformed
         // TODO add your handling code here:
-             java.awt.EventQueue.invokeLater(new Runnable() {
+                cadastro.imprime();
+
+          /*   java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Demitir().setVisible(true);
             }
-        });
+        }); */
     }//GEN-LAST:event_DEMITIRActionPerformed
 
     private void VOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTARActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_VOLTARActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,5 +216,8 @@ Cadastro cadastro = new Cadastro();
     private javax.swing.JButton LISTA;
     private javax.swing.JButton PAGAR;
     private javax.swing.JButton VOLTAR;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
