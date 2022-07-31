@@ -4,21 +4,11 @@
  */
 package minigames;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.*;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -27,52 +17,56 @@ import javax.swing.JPanel;
 public class MiniGames extends JFrame implements ActionListener{
 
        JPanel menu;
-    JButton[] games = new JButton[3];
+    JButton [] button = new JButton[3];
+    
 ImageIcon image = new ImageIcon(getClass().getResource("/minigames/snake.png"));
+ImageIcon tictac = new ImageIcon(getClass().getResource("/minigames/TICTAC.png"));
 
 Font myFont = new Font("Ink Free",Font.BOLD,50);
 MiniGames(){
     
  menu = new JPanel();
    menu.setLayout(null);
-   JLabel snakePane = new JLabel();
+  button[0] = new JButton();
+  button[1] = new JButton();
+  button[2] = new JButton("Quit");
+  button[2].setForeground(Color.white);
+  button[2].setFont(new Font("Ink Free",Font.BOLD,30));
+ // button[2].set(false);
                  // configurando imagem pro tamanho do botao
               Image img = image.getImage();
-   snakePane.setBounds(80,250 , 100, 80);
-    Image imgScale = img.getScaledInstance(snakePane.getWidth(), snakePane.getHeight(), Image.SCALE_SMOOTH);
+         Image tic = tictac.getImage();
+   button[2].setBounds(600,670,100,30);
+   button[0].setBounds(50,250 , 250, 250);
+   button[1].setBounds(400,250 , 250, 250);
+    Image imgScale = img.getScaledInstance(button[0].getWidth(), button[0].getHeight(), Image.SCALE_SMOOTH);
+    Image imgTic = tic.getScaledInstance(button[1].getWidth(), button[1].getHeight(), Image.SCALE_SMOOTH);
    ImageIcon scaledIcon = new ImageIcon(imgScale);
-   snakePane.setIcon(scaledIcon);
+   ImageIcon scaledTic = new ImageIcon(imgTic);
+   button[0].setIcon(scaledIcon);
+   
+   for(int i=0; i<3;i++){
+   button[i].setBackground(Color.black);
+   button[i].addActionListener(this);
+   menu.add(button[i]);
+   }
+   button[1].setIcon(scaledTic);
    menu.setPreferredSize(new Dimension(700,700));
    JLabel welcome = new JLabel("WELCOME!", JLabel.CENTER);
-   welcome.setFont(new Font("Ink Free",Font.BOLD,80));
    JLabel select = new JLabel("Select your game:", JLabel.CENTER);
+      welcome.setFont(myFont);
    welcome.setForeground(Color.red);
    welcome.setBounds(0, 50, 700, 80);
    select.setBounds(0, 130,700,80);
    select.setForeground(Color.white);
    select.setFont(myFont);
-   menu.add(snakePane);
+
    menu.add(select);
-   
-
-    games[0] = new JButton("Snake Game");
-    games[1] = new JButton("Jogo da Velha");
-    games[2] = new JButton("Minefield");
-    games[0].setBounds(200, 250, 350, 80);
-    games[1].setBounds(200, 350, 350, 80);
-    games[2].setBounds(200, 450, 350, 80);
-
     menu.setBackground(Color.black);
-for (int i=0; i<3;i++){
-menu.add(games[i]);
-games[i].setBackground(Color.black);
-games[i].setFont(myFont);
-games[i].setForeground(Color.white);
-games[i].addActionListener(this);
-}
+
    menu.add(welcome);
     this.add(menu);
-            this.setTitle("Mini Games");
+            this.setTitle("Mini Games - by @jamilzin");
         this.setResizable(false);
         this.pack();
         this.setVisible(true);
@@ -85,13 +79,22 @@ new MiniGames();
     }
         @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==games[0]){
+        if(e.getSource()==button[0]){
       
             try {
                 new SnakeFrame();
             } catch (Exception ex){
-
         }
 
     }
-}}
+            if(e.getSource()==button[1]){
+      
+           JOptionPane.showMessageDialog(null,"Tic-Tac-Toe coming soon");
+
+    }
+        if(e.getSource()==button[2]){
+      
+          System.exit(0);
+    }
+}
+}
