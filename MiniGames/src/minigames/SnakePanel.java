@@ -6,6 +6,7 @@ import java.util.Random;
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
+import java.net.URL;
 import java.util.Scanner;
 
 import javax.sound.sampled.*;
@@ -24,9 +25,12 @@ public class SnakePanel extends JPanel implements ActionListener
     boolean running = true;
     Timer timer;
     Random random;
-    private Clip clip = musica();
-   
-    
+  URL     musicSound = getClass().getResource("/Music1.wav");
+  Clip clip = musica(music);
+
+  //  URL musicSound,eatSound,loseSound;
+
+
     SnakePanel()  {
     random = new Random();
     this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -37,8 +41,8 @@ public class SnakePanel extends JPanel implements ActionListener
     }
 
     public void startSnake() {
-  clip.setMicrosecondPosition(0);
-  clip.start();
+  clipMusic.setMicrosecondPosition(0);
+  clipMusic.start();
       bodyParts = 3;
         if(gameOn==0){
          running = true;
@@ -68,18 +72,18 @@ public class SnakePanel extends JPanel implements ActionListener
     }
     
 
-  Clip  musica() {
+  Clip  musica(URL music) {
       try{
-            String musica = "Music1.wav";
-            File file = new File(musica);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+           // String musica = "Music1.wav";
+          //  File file = new File(musicSound);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(music);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
-             return clip;
+             return clipMusic;
        }
      catch(Exception ex){
             ex.printStackTrace();}
-             return clip;
+             return clipMusic;
   } 
 
     public void draw(Graphics g) {
@@ -163,7 +167,7 @@ public class SnakePanel extends JPanel implements ActionListener
     }
     
     public void gameOver(Graphics g){
-        clip.stop();
+        clipMusic.stop();
     g.setColor(Color.red);
     g.setFont(new Font("Ink Free",Font.BOLD,50));
     FontMetrics metrics =  getFontMetrics(g.getFont());
@@ -229,7 +233,7 @@ public void dispose() {
                 break;
                 
             case KeyEvent.VK_F3: {
-                clip.stop();
+                clipMusic.stop();
                  dispose();}
                break;
                    
