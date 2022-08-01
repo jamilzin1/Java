@@ -1,22 +1,54 @@
 # Java
 
 	Jamil de Souza 
-         trab.jamilsouza@gmail.com
+    trab.jamilsouza@gmail.com
 
-https://www.linkedin.com/in/jamil-souza-b75ba9110/
+  [linkedIn](https://www.linkedin.com/in/jamil-souza-b75ba9110/)
+
+_______________________________________________________________________
+
+# MiniGames
+
+[link to git MiniGames](MiniGames/src) // most recently project
+
+Application menu games
+- Snake Game
+
+_Using timer and API Java Graphics to draw;
+Keybindings; clipSounds;_
+
+_______________________________________________________________________
+# Empresa
+
+[link to gitEmpresa](/Empresa/src) // need add some button options and some actions
+Enterprise system
+
+- Have a login system working, where you can login with Admin (user: admin | password: admin ) and register a new Account for your employer in Admin page to login in "Employer page"
 
 
-Folder MiniGames: // most recently project
->APPLICATION GAMES
-*Snake Game
+_Java GUI;_
 
+_______________________________________________________________________
+# Cassino
 
-Folder Empresa: // need add some button options and some actions
-> ENTERPRISE SYSTEM
+[link to git Cassino](/Cassino/src) // need  rework and add GUI
+- Blackjack game
 
-Have a login system working, where you can login with Admin (user: admin | password: admin ) and register a new Account for your employer in Admin page
+_Manipulation of ArrayLists and stream();_
 
-Folder Cassino: // need  rework and add GUI
-> BLACKJACK GAME
+  !need fix if player.sum>21 break
+  
+  _______________________________________________________________________
+# Callcenterr
 
- need fix if player.sum>21 break
+[link to git Callcenter](/Callcenterr/src) 
+
+_-A simple "callcenter" using HashMap_
+
+_______________________________________________________________________
+
+# Calculadora
+
+[link to git Calculadora ](/Calculadora/src)
+- A simple GUI calculator
+_Javax;_
