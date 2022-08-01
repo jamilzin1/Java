@@ -17,7 +17,10 @@ Application menu games
 ![image](https://github.com/jamilzin1/Java/blob/master/ProjectsImages/snake.jpg)
 
 _Using timer and API Java Graphics to draw;
-Keybindings; clipSounds;_
+
+Keybindings; 
+
+clipSounds;_
 
 _______________________________________________________________________
 # Empresa
