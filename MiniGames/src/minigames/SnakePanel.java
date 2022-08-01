@@ -5,15 +5,14 @@ import java.awt.event.*;
 import java.util.Random;
 import java.awt.*;
 import javax.swing.*;
-import java.io.*;
 import java.net.URL;
-import java.util.Scanner;
-
 import javax.sound.sampled.*;
 
 
 public class SnakePanel extends JPanel implements ActionListener  
         {
+//variables
+    private static final long serialVersionUID = 1L;
     static final int SCREEN_WIDTH = 700;
     static final int SCREEN_HEIGHT = 700;
     static final int UNIT = 25;
@@ -25,12 +24,55 @@ public class SnakePanel extends JPanel implements ActionListener
     boolean running = true;
     Timer timer;
     Random random;
-  URL     musicSound = getClass().getResource("/Music1.wav");
-  Clip clip = musica(music);
+    
+    // methods where set musics to play
+    private Clip clipMusic = musica();
+    private Clip clipEat = eatSound();
+    private Clip clipLose = loseSound(); 
+    URL musicSound,eatSound,loseSound;
 
-  //  URL musicSound,eatSound,loseSound;
-
-
+    // sounds methods
+  Clip  musica() {
+      try{
+          musicSound = getClass().getResource("/Music1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicSound);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+             return clip;
+       }
+     catch(Exception ex){
+            ex.printStackTrace();
+     }
+             return clipMusic;
+  } 
+  
+  Clip  eatSound() {
+      try{
+eatSound = getClass().getResource("/eatSound.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(eatSound);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+             return clip;
+       }
+     catch(Exception ex){
+            ex.printStackTrace();}
+             return clipEat;
+  }
+    
+  Clip  loseSound() {
+      try{
+            loseSound = getClass().getResource("/lose.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(loseSound);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+             return clip;
+       }
+     catch(Exception ex){
+            ex.printStackTrace();}
+             return clipLose;
+  }  
+   
+    // A panel for game
     SnakePanel()  {
     random = new Random();
     this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -40,6 +82,7 @@ public class SnakePanel extends JPanel implements ActionListener
     startSnake();
     }
 
+    //start game 
     public void startSnake() {
   clipMusic.setMicrosecondPosition(0);
   clipMusic.start();
@@ -47,23 +90,20 @@ public class SnakePanel extends JPanel implements ActionListener
         if(gameOn==0){
          running = true;
   spawnItem();
-  DELAY=55;
   timer = new Timer(DELAY,this);
   timer.start();}
-
         else {
             timer.start();
         x[0] = 300;
         y[0]=300;
-
     spawnItem();
          }
     }
     
+    // RGN for spawn new items
     public void spawnItem(){
         itemX = random.nextInt(SCREEN_WIDTH/UNIT)*UNIT;
         itemY = random.nextInt(SCREEN_HEIGHT/UNIT)*UNIT;
-
     }
     
     public void paintComponent(Graphics g){
@@ -71,27 +111,14 @@ public class SnakePanel extends JPanel implements ActionListener
         draw(g);
     }
     
-
-  Clip  musica(URL music) {
-      try{
-           // String musica = "Music1.wav";
-          //  File file = new File(musicSound);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(music);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-             return clipMusic;
-       }
-     catch(Exception ex){
-            ex.printStackTrace();}
-             return clipMusic;
-  } 
-
+   // draw snake, item(apple), score
     public void draw(Graphics g) {
         if(running){
     g.setColor(Color.red);
     g.fillOval(itemX, itemY, UNIT, UNIT);
-    g.setFont(new Font("Ink Free",Font.BOLD,50));
-    g.drawString("Score: "+itemEat, 250, 50);
+    g.setColor(Color.white);
+    g.setFont(new Font("Ink Free",Font.BOLD,30));
+    g.drawString("Score: "+itemEat, 280, 50);
     for(int i=0;i<bodyParts;i++){
     if(i==0){
     g.setColor(Color.green);
@@ -108,6 +135,7 @@ public class SnakePanel extends JPanel implements ActionListener
         }
     }
 
+    //move action
     public void move(){
     for(int i = bodyParts;i>0;i--){
     x[i]=x[i-1];
@@ -128,16 +156,18 @@ public class SnakePanel extends JPanel implements ActionListener
             break;
     }
     }
-    
+    // check if snake eat item
     public void checkItem(){
     if((x[0]==itemX)&&y[0]==itemY){
     bodyParts++;
     itemEat++;
     spawnItem();
+    clipEat.setMicrosecondPosition(0);
+    clipEat.start();
    timer.setDelay(DELAY-1);
     }
     }
-    
+    //check collisions  
     public void checkCollision(){
     //checks if head collides with body
 		for(int i = bodyParts;i>0;i--) {
@@ -166,8 +196,11 @@ public class SnakePanel extends JPanel implements ActionListener
                 }
     }
     
+    //draw game over
     public void gameOver(Graphics g){
         clipMusic.stop();
+        clipLose.setMicrosecondPosition(0);
+        clipLose.start();
     g.setColor(Color.red);
     g.setFont(new Font("Ink Free",Font.BOLD,50));
     FontMetrics metrics =  getFontMetrics(g.getFont());
@@ -183,11 +216,13 @@ public class SnakePanel extends JPanel implements ActionListener
     g.drawString("Press F3 to back menu", 50, 630);  
     g.drawString("Press F4 to quit", 50, 660);    
 }
+    
+    // dispose like a JFrame method
 public void dispose() {
     JFrame parent = (JFrame) this.getTopLevelAncestor();
     parent.dispose();
 }
-
+    // user iteration
     @Override
     public void actionPerformed(ActionEvent e) {
         if(running){
@@ -197,7 +232,7 @@ public void dispose() {
  }
         repaint();
     }
-    
+    // keyboard iteration
     public class MyKeyAdapter extends KeyAdapter{
 
         @Override
@@ -229,6 +264,7 @@ public void dispose() {
                    startSnake();
                    repaint();
                    itemEat=0;
+                   timer.setDelay(55);
                }
                 break;
                 

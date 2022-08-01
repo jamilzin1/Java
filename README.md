@@ -1,14 +1,22 @@
 # Java
 
-Jamil de Souza 
+	Jamil de Souza 
+         trab.jamilsouza@gmail.com
+
+https://www.linkedin.com/in/jamil-souza-b75ba9110/
 
 
-Folder Cassino:
+Folder MiniGames: // most recently project
+>APPLICATION GAMES
+*Snake Game
 
-v1.2.0 -> added Dealer class
 
-v1.2.2 -> added class Game
+Folder Empresa: // need add some button options and some actions
+> ENTERPRISE SYSTEM
 
-v1.2.3 -> need create a compare() 
+Have a login system working, where you can login with Admin (user: admin | password: admin ) and register a new Account for your employer in Admin page
 
-v1.2.4 -> need fix if player.sum>21 break
+Folder Cassino: // need  rework and add GUI
+> BLACKJACK GAME
+
+ need fix if player.sum>21 break
