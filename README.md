@@ -14,6 +14,8 @@ _______________________________________________________________________
 Application menu games
 - Snake Game
 
+![image](https://github.com/jamilzin1/Java/blob/master/ProjectsImages/snake.jpg)
+
 _Using timer and API Java Graphics to draw;
 Keybindings; clipSounds;_
 
@@ -25,6 +27,7 @@ Enterprise system
 
 - Have a login system working, where you can login with Admin (user: admin | password: admin ) and register a new Account for your employer in Admin page to login in "Employer page"
 
+![image](https://github.com/jamilzin1/Java/blob/master/ProjectsImages/empresa.png)
 
 _Java GUI;_
 
@@ -51,4 +54,7 @@ _______________________________________________________________________
 
 [link to git Calculadora ](/Calculadora/src)
 - A simple GUI calculator
+
+![image](https://github.com/jamilzin1/Java/blob/master/ProjectsImages/calculator.PNG)
+
 _Javax;_
