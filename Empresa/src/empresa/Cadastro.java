@@ -5,45 +5,73 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cadastro extends javax.swing.JFrame {
-
+//    double salarioSum;
 ArrayList<Funcionario> funcionarios = new ArrayList<>();
 Map<String, String> login = new HashMap<String, String>();
 
-
     public Cadastro() {
      initComponents();
+     this.setLocationRelativeTo(null);
        this.setTitle("Cadastro");
-
     }
 
-   public  Integer loginVerify(String usuario, String senha){
+   public  boolean loginVerify(String usuario, String senha){
         if(login.containsKey(usuario)&&senha.equals(login.get(usuario))){
-          return 1;        }
-        else
-          return  0;
+               return true;  }
+else
+            return false;
     }
-
+/*
+      double total(){
+          double total = 0;
+    for(Funcionario trabalhador : funcionarios){
+    if(trabalhador instanceof Funcionario){
+total = total + trabalhador.getSalario();    }
+    }
+   return total;}
+   
+    public double salarioSum(){
+   return funcionarios.stream().mapToDouble(Funcionario::getSalario).sum();
+    } */
+   
+       double salario(){
+           double salario =0;
+    if("Programador Java".equals(cargo.getSelectedItem())){
+        salario = 5500;
+    }
+    else {
+    salario = 1550;}
+    return salario;
+    }
     Funcionario cadastrar(String nome, String CPF, String email, String telefone,
-            String cargo, String sexo, String usuario, String senha){
-    Funcionario trabalhador = new Funcionario(nome,CPF,email,telefone,cargo,sexo,usuario,senha);
+            String cargo, String sexo, String usuario, String senha,double salario){
+    Funcionario trabalhador = new Funcionario(nome,CPF,email,telefone,cargo,sexo,usuario,senha, salario);
     funcionarios.add(trabalhador);
     login.put(usuario, senha);
+       //salarioSum = salarioSum();
     return trabalhador;
     }
     
-    void listar(){
+   Integer contar(){
+               int i =0;
     for(Funcionario trabalhador : funcionarios){
     if(trabalhador instanceof Funcionario){
-        System.out.println(trabalhador.getNome());
-        System.out.println(login.get(user.getText()));
-                System.out.println("----user");
-    }}
+      i++;
     }
+    }
+   return i;}
     
+    public String toString(int k) {
+        return funcionarios.get(k).toString()+"\n";
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         name = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
@@ -64,9 +92,46 @@ Map<String, String> login = new HashMap<String, String>();
         voltarBOTAO = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        phone.setText("31912345678");
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nome");
 
@@ -84,12 +149,13 @@ Map<String, String> login = new HashMap<String, String>();
 
         cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programador Java", "Estagiario" }));
 
-        password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        password.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Outro" }));
 
         jLabel8.setText("Sexo");
 
+        cadastroBOTAO.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         cadastroBOTAO.setText("CADASTRAR");
         cadastroBOTAO.setToolTipText("");
         cadastroBOTAO.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +164,7 @@ Map<String, String> login = new HashMap<String, String>();
             }
         });
 
+        voltarBOTAO.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         voltarBOTAO.setText("VOLTAR");
         voltarBOTAO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,9 +237,9 @@ Map<String, String> login = new HashMap<String, String>();
                     .addComponent(jLabel4)
                     .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -181,7 +248,7 @@ Map<String, String> login = new HashMap<String, String>();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastroBOTAO)
                     .addComponent(voltarBOTAO))
@@ -197,18 +264,26 @@ Map<String, String> login = new HashMap<String, String>();
           
         cadastrar(name.getText(),cpf.getText(), email.getText(), phone.getText(),
                 (String.valueOf(cargo.getSelectedItem())), (String.valueOf(sexo.getSelectedItem())),
-                user.getText(),String.valueOf(password.getPassword()));
-        //imprimeHash();
-      //  funcionarios.forEach( trabalhador -> System.out.println(trabalhador.getNome()));
-      //cadastroLogin(user.getText(),String.valueOf(password.getPassword()));
+                user.getText(),String.valueOf(password.getPassword()),salario());
+        
+name.setText("");
+cpf.setText("");
+email.setText("");
+phone.setText("");
+user.setText("");
+password.setText("");
       dispose();
     }//GEN-LAST:event_cadastroBOTAOActionPerformed
 
     private void voltarBOTAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBOTAOActionPerformed
         // TODO add your handling code here:
-      //  dispose();
-dispose();
+        dispose();
+     
     }//GEN-LAST:event_voltarBOTAOActionPerformed
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameActionPerformed
 
         
     
@@ -221,6 +296,7 @@ dispose();
     private javax.swing.JComboBox<String> cargo;
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField email;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -230,6 +306,8 @@ dispose();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField name;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField phone;
@@ -237,4 +315,6 @@ dispose();
     private javax.swing.JTextField user;
     private javax.swing.JButton voltarBOTAO;
     // End of variables declaration//GEN-END:variables
+
+
 }

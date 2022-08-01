@@ -9,10 +9,12 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         this.setTitle("Bem-vindo");
         initComponents();
-        JOptionPane.showMessageDialog(null,"Entre como 'admin' em usuario e senha para acessar area do administrador\n"
-                + "use o usuario e senha cadastrada para o funcionario para a area de funcionarios"  );
+        this.setLocationRelativeTo(null);
+        JOptionPane.showMessageDialog(null,"Entre como 'admin' em usuario e senha para acessar como administrador\n"
+                + "use o usuario e senha cadastrada para o funcionario, para acessar a area de funcionarios"  );
     }
     Administrador adm = new Administrador();
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -62,7 +64,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(OK)
@@ -114,7 +116,7 @@ public class Login extends javax.swing.JFrame {
        else if((adm.verify(user.getText(), (String.valueOf(password.getPassword()))))==true){
              java.awt.EventQueue.invokeLater(() -> {
                      new AreaFuncionario().setVisible(true);
-                 }); System.out.println("uat");
+                 }); 
         }  
             else  
             {

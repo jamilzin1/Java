@@ -1,18 +1,24 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Jamil de Souza - 5T34
+Projeto Final
+
+*/
 package empresa;
+
+import java.util.Arrays;
 
 
 public class Main {
     
     public static void main(String[] args) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        try{
+       {       java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
             }
-        });
+        }); }
     }
+    catch(Exception e){
+            System.out.println(Arrays.toString(e.getStackTrace()));
 }
+}}

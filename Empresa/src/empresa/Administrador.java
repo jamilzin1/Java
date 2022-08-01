@@ -1,68 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package empresa;
 
-/**
- *
- * @author jamil
- */
-public class Administrador extends javax.swing.JFrame {
+import java.util.stream.Stream;
+import javax.swing.JOptionPane;
 
-Cadastro cadastro = new Cadastro();
+public class Administrador extends javax.swing.JFrame {
+    Funcionario funcionario = new Funcionario(null,null,null,null,null,null,null,null,0);
+    Financas financas = new Financas();
     public Administrador() {
         initComponents();
+      this.setLocationRelativeTo(null);
+        this.setTitle("GESTAO DO ADMINISTRADOR");
+
     }
 
-boolean verify(String usuario, String senha){
-    if(cadastro.loginVerify(usuario, senha)==1){
-    return true;}
+    boolean verify(String usuario, String senha){
+return funcionario.verify(usuario, senha)==true;
+}
 
-    else
-        return false;
-}
-void imprime(){
-                cadastro.imprime();
-}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CADASTRAR = new javax.swing.JButton();
-        DEMITIR = new javax.swing.JButton();
-        PAGAR = new javax.swing.JButton();
-        LISTA = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         VOLTAR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        gerir = new javax.swing.JButton();
+        MENSAGENS = new javax.swing.JButton();
+        FINANCAS = new javax.swing.JButton();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        CADASTRAR.setText("CADASTRAR");
-        CADASTRAR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CADASTRARActionPerformed(evt);
-            }
-        });
-
-        DEMITIR.setText("DEMITIR");
-        DEMITIR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DEMITIRActionPerformed(evt);
-            }
-        });
-
-        PAGAR.setText("PAGAR");
-        PAGAR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PAGARActionPerformed(evt);
-            }
-        });
-
-        LISTA.setText("LISTA DE FUNCIONARIOS");
-
+        VOLTAR.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         VOLTAR.setText("VOLTAR");
         VOLTAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,14 +42,32 @@ void imprime(){
         });
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
-        jLabel1.setText("GERENCIAMENTO");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("GESTÃO");
 
         jLabel2.setText("Você está logado como administrador");
 
-        jButton1.setText("GERIR FUNCIONARIOS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        gerir.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        gerir.setText("GESTAO DE PESSOAS");
+        gerir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                gerirActionPerformed(evt);
+            }
+        });
+
+        MENSAGENS.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        MENSAGENS.setText("MENSAGENS");
+        MENSAGENS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MENSAGENSActionPerformed(evt);
+            }
+        });
+
+        FINANCAS.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        FINANCAS.setText("CONTABILIDADE");
+        FINANCAS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FINANCASActionPerformed(evt);
             }
         });
 
@@ -87,136 +76,71 @@ void imprime(){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(126, 126, 126)
-                                .addComponent(CADASTRAR)
-                                .addGap(52, 52, 52)
-                                .addComponent(VOLTAR))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(218, 218, 218)
-                                .addComponent(PAGAR))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(LISTA))))
-                        .addGap(0, 17, Short.MAX_VALUE))
+                    .addComponent(MENSAGENS, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FINANCAS, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gerir, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(DEMITIR)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(VOLTAR)
+                        .addGap(18, 18, 18))))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33)
-                .addComponent(PAGAR)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(gerir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(FINANCAS)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MENSAGENS)
+                .addGap(24, 24, 24)
+                .addComponent(VOLTAR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LISTA)
-                .addGap(5, 5, 5)
-                .addComponent(DEMITIR)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VOLTAR)
-                    .addComponent(CADASTRAR))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jLabel2))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CADASTRARActionPerformed
-        // TODO add your handling code here:
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 cadastro.setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_CADASTRARActionPerformed
-
-    private void PAGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PAGARActionPerformed
-        // TODO add your handling code here:
-                java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Pagar().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_PAGARActionPerformed
-
-    private void DEMITIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEMITIRActionPerformed
-        // TODO add your handling code here:
-                cadastro.imprime();
-
-          /*   java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Demitir().setVisible(true);
-            }
-        }); */
-    }//GEN-LAST:event_DEMITIRActionPerformed
-
     private void VOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VOLTARActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_VOLTARActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void gerirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        funcionario.setVisible(true);
+    }//GEN-LAST:event_gerirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void MENSAGENSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MENSAGENSActionPerformed
+        // TODO add your handling code here:
+      JOptionPane.showMessageDialog(null, "Não há nenhuma mensagem a ser lida");
 
-        /* Create and display the form */
-   
-    }
+    }//GEN-LAST:event_MENSAGENSActionPerformed
+
+    private void FINANCASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FINANCASActionPerformed
+        // TODO add your handling code here:
+    financas.setVisible(true);
+    }//GEN-LAST:event_FINANCASActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CADASTRAR;
-    private javax.swing.JButton DEMITIR;
-    private javax.swing.JButton LISTA;
-    private javax.swing.JButton PAGAR;
+    private javax.swing.JButton FINANCAS;
+    private javax.swing.JButton MENSAGENS;
     private javax.swing.JButton VOLTAR;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton gerir;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
